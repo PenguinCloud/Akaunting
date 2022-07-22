@@ -10,3 +10,7 @@
     delay: 5
     timeout: 10
   with_items: "{{ ports }}"
+  register: port_result
+  until: port_result is succeeded
+  retries: 5
+  delay: 10
