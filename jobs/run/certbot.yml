@@ -1,0 +1,13 @@
+---
+- name: Create empty repo for certbot config file
+  file:
+    path: /etc/certbot/
+    state: directory
+
+- name: Template a file
+  template:
+    src: templates/certbot.j2
+    dest: /etc/certbot/certbot.conf
+
+- name: Run certbot
+  shell: certbot --config /etc/certbot/certbot.conf

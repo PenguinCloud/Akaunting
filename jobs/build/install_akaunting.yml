@@ -1,0 +1,11 @@
+---
+- name: Create empty repo for akaunting
+  file:
+    path: /opt/akaunting
+    state: directory
+
+- name: Install Akaunting
+  unarchive:
+    src: "{{ app.link }}"
+    dest: /opt/akaunting/
+    remote_src: yes

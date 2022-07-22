@@ -1,0 +1,6 @@
+---
+- name: Template file to sites available
+  template:
+    src: templates/nginx.j2
+    dest: /etc/nginx/sites-available/akaunting
+    force: yes

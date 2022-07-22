@@ -1,0 +1,8 @@
+---
+- name: Install dependencies
+  include_tasks:
+    file: install_dependencies.yml
+
+- name: Install Akaunting
+  include_tasks:
+    file: install_akaunting.yml

@@ -1,0 +1,8 @@
+---
+- name: Run nginx test
+  include_tasks:
+    file: nginx_test.yml
+
+- name: Test Uri
+  include_tasks:
+    file: uri_test.yml

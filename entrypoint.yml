@@ -1,5 +1,5 @@
 ---
-- name: PROJECT NAME
+- name: Akaunting
   hosts: localhost
   connection: local
   vars_files:
@@ -18,25 +18,17 @@
       include_vars:
         file: "vars/{{ lookup('env', 'COMPUTE_ENV') | default( 'base', True) }}.yml"
       ignore_errors: yes
-    - name: Build And Install
+# Before I can execute run I have to make sure I can connect to a database
+    - name: Test database
       include_tasks:
-        file: jobs/build/build.yml
-        apply:
-          tags:
-            - build
-      tags:
-        - build
+        file: jobs/tests/database_test.yml
+    - name: Run And Configure
+      include_tasks:
+        file: jobs/run/run.yml
     - name: Execute application
       include_tasks:
         file: jobs/run/exec.yml
-        apply:
-          tags:
-            - exec
-      tags:
-        - exec
     - name: Run tests to make sure app is running as expected
       include_tasks:
-        file: jobs/run/tests.yml
-      tags:
-        - exec
-        - test
+        file: jobs/tests/tests.yml
+

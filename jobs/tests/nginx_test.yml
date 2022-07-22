@@ -1,0 +1,12 @@
+---
+- name: Test for running nginx
+  shell: ps waux | grep nginx
+  register: nginx_result
+  failed_when: nginx_result.stdout_lines | length == 1
+
+- name: Check if port 80 and 443 are listening
+  wait_for:
+    port: "{{ item }}"
+    delay: 5
+    timeout: 10
+  with_items: "{{ ports }}"
