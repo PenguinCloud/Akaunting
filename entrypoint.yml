@@ -18,10 +18,6 @@
       include_vars:
         file: "vars/{{ lookup('env', 'COMPUTE_ENV') | default( 'base', True) }}.yml"
       ignore_errors: yes
-# Before I can execute run I have to make sure I can connect to a database
-    - name: Test database
-      include_tasks:
-        file: jobs/tests/database_test.yml
     - name: Run And Configure
       include_tasks:
         file: jobs/run/run.yml

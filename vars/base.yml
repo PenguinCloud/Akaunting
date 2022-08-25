@@ -10,18 +10,4 @@ database:
   password: "{{ lookup('env', 'DATABASE_PASSWORD') }}"
   host: "{{ lookup('env', 'DATABASE_HOST') }}"
   port: "{{ lookup('env', 'DATABASE_PORT') }}"
-
-organization:
-  name: "{{ lookup('env', 'ORGANIZATION_NAME') }}"
-  country: "{{ lookup('env', 'ORGANIZATION_COUNTRY') }}"
-  email: "{{ lookup('env', 'ORGANIZATION_EMAIL') }}"
-  hostname: "{{ lookup('env', 'ORGANISATION_HOSTNAME') }}"
-
-url: "{{ lookup('env', 'URL') }}"
-
-ssl_key: "{{ lookup('env', 'SSL_KEY') }}"
-ssl_cert: "{{ lookup('env', 'SSL_CERT') }}"
-
-ports:
-  - 80
-  - 443
+  type: "{{ lookup('env', 'DATABASE_TYPE') }}"

@@ -1,8 +1,12 @@
 ---
-- name: Run nginx test
-  include_tasks:
-    file: nginx_test.yml
-
-- name: Test Uri
-  include_tasks:
-    file: uri_test.yml
+- name: Check database connectivity
+  mysql_db:
+    login_user: "{{ database.user }}"
+    login_password: "{{ database.password }}"
+    login_host: "{{ database.host }}"
+    login_port: "{{ database.port }}"
+    name: "{{ database.name }}"
+  register: db_result
+  until: db_result is succeeded
+  retries: 10
+  delay: 10

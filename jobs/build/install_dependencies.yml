@@ -1,19 +1,4 @@
 ---
-- name: Install dependencies
-  apt:
-    pkg:
-      - lsb-release
-      - ca-certificates
-      - apt-transport-https
-      - openssl
-      - software-properties-common
-      - nginx
-      - python3-pymysql
-      - python3-certbot-nginx
-      - certbot
-    state: present
-    update_cache: yes
-
 - name: Add php repo
   apt_repository:
     repo: ppa:ondrej/php
@@ -45,7 +30,9 @@
       - php8.1-pdo
       - php8.1-tokenizer
       - php8.1-zip
+      - python3-pymysql
     state: present
     update_cache: yes
+
 
 

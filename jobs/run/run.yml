@@ -1,8 +1,0 @@
----
-- name: Configure nginx
-  include_tasks:
-    file: nginx.yml
-
-- name: Generate ssl certificate
-  include_tasks:
-    file: open_ssl.yml
