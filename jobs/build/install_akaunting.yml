@@ -12,6 +12,21 @@
 - name: Install Akaunting
   unarchive:
     src: "/opt/akaunting/{{ app.version }}"
-    dest: /opt/akaunting
-    owner: "{{ run.user }}"
+    dest: /opt/akauntin
     remote_src: yes
+    owner: "{{ run.user }}"
+    group: "{{ run.user }}"
+    mode: '775'
+
+- name: Delete the zip file
+  file:
+    path: "/opt/akaunting/{{ app.version }}"
+    state: absent
+
+- name: Recursively change ownership of a directory
+  ansible.builtin.file:
+    path: /etc/foo
+    state: directory
+    recurse: yes
+    owner: foo
+    group: foo

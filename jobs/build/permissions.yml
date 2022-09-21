@@ -1,7 +1,14 @@
 ---
-- name: Set ownership of directory
-  file:
-    path: var/www
-    state: directory
-    recurse: yes
-    owner: "{{ run.user }}"
+- name: Change file ownership, group and permissions
+  ansible.builtin.file:
+    path: /etc/nginx/nginx.conf
+    owner: ptg-user
+    group: ptg-user
+
+- name: Change file ownership, group and permissions
+  ansible.builtin.file:
+    path: /etc/nginx/nginx.conf
+    state: touch
+    owner: ptg-user
+    group: ptg-user
+

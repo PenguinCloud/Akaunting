@@ -7,6 +7,6 @@
   include_tasks:
     file: install_akaunting.yml
 
-- name: change owner of file
+- name: Configure nginx
   include_tasks:
-    file: permissions.yml
+    file: config_nginx.yml
