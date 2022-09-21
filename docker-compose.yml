@@ -16,6 +16,8 @@ services:
   app:
     image: penguintech/akaunting
     build: .
+    ports:
+      - 8080:8080
     depends_on:
       - mariadb
     networks:

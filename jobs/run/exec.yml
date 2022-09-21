@@ -1,0 +1,7 @@
+---
+- name: Start nginx
+  shell:
+    cmd: |
+      /etc/init.d/nginx start
+      /etc/init.d/php8.1-fpm start
+

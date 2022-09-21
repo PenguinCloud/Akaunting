@@ -6,3 +6,7 @@
 - name: Install Akaunting
   include_tasks:
     file: install_akaunting.yml
+
+- name: change owner of file
+  include_tasks:
+    file: permissions.yml

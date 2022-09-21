@@ -1,8 +1,9 @@
 run:
-  user: ptg-user
+  user: www-data
 app:
   title: "{{ lookup('ansible.builtin.env', 'APP_TILE') }}"
   link: "{{ lookup('env', 'APP_LINK') }}"
+  version: "{{ lookup('env', 'APP_VERSION') }}"
 
 database:
   name: "{{ lookup('env', 'DATABASE_NAME') }}"
@@ -11,3 +12,5 @@ database:
   host: "{{ lookup('env', 'DATABASE_HOST') }}"
   port: "{{ lookup('env', 'DATABASE_PORT') }}"
   type: "{{ lookup('env', 'DATABASE_TYPE') }}"
+
+url : "{{ lookup('env', 'URL') }}"

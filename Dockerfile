@@ -13,6 +13,7 @@ RUN apt update && apt dist-upgrade -y && apt auto-remove -y && apt clean -y
 # PUT YER ARGS in here
 ARG APP_TITLE="Akaunting"
 ARG APP_LINK="https://akaunting.com/download.php?version=latest"
+ARG APP_VERSION="Akaunting_3.0.6-Stable.zip"
 
 # BUILD IT!
 RUN ansible-playbook build.yml -c local
@@ -24,9 +25,12 @@ ENV DATABASE_USER="akaunting"
 ENV DATABASE_PASSWORD="p@ssword"
 ENV DATABASE_HOST="mariadb"
 ENV DATABASE_PORT="3306"
+ENV URL="example.penguintech.group"
 
 # Switch to non-root user
-# USER ptg-user
+USER www-data
+
+EXPOSE 8080
 
 # Entrypoint time (aka runtime)
 ENTRYPOINT ["/bin/bash","/opt/manager/entrypoint.sh"]
