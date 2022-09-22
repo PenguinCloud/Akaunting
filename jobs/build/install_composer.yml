@@ -1,0 +1,15 @@
+---
+- name: Create composer download repo
+  file:
+    path: /opt/composer
+    state: directory
+
+- name: Download composer
+  get_url:
+    url: https://getcomposer.org/installer
+    dest: /opt/composer/composer-setup.php
+
+- name: Install composer
+  shell:
+    chdir: /opt/composer
+    cmd: php composer-setup.php --install-dir=/usr/local/bin --filename=composer

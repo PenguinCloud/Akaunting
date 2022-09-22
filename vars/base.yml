@@ -13,4 +13,12 @@ database:
   port: "{{ lookup('env', 'DATABASE_PORT') }}"
   type: "{{ lookup('env', 'DATABASE_TYPE') }}"
 
+company:
+  email: "{{ lookup('env', 'COMPANY_EMAIL') }}"
+  name: "{{ lookup('env', 'COMPANY_NAME') }}"
+
+admin:
+  password: "{{ lookup('env', 'ADMIN_PASSWORD') }}"
+  email: "{{ lookup('env', 'ADMIN_EMAIL') }}"
+
 url : "{{ lookup('env', 'URL') }}"

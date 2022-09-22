@@ -3,10 +3,11 @@
   include_tasks:
     file: install_dependencies.yml
 
+- name: Install Composer
+  include_tasks:
+    file: install_composer.yml
+
 - name: Install Akaunting
   include_tasks:
     file: install_akaunting.yml
 
-- name: Configure nginx
-  include_tasks:
-    file: config_nginx.yml

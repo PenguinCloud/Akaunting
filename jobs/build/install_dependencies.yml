@@ -23,7 +23,6 @@
       - php8.1-ctype
       - php8.1-dom
       - php8.1-fileinfo
-      - openssl
       - php8.1-pdo
       - php8.1-tokenizer
       - php8.1-mbstring
@@ -41,6 +40,7 @@
       - php8.1-cgi
       - python3-pymysql
       - nginx-full
+      - npm
     state: present
     update_cache: yes
 

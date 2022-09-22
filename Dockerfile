@@ -26,6 +26,10 @@ ENV DATABASE_USER="akaunting"
 ENV DATABASE_PASSWORD="p@ssword"
 ENV DATABASE_HOST="mariadb"
 ENV DATABASE_PORT="3306"
+ENV COMPANY_NAME="Penguintech Group"
+ENV COMPANY_EMAIL="company@gmail.com"
+ENV ADMIN_PASSWORD="admin"
+ENV ADMIN_EMAIL="dompoes@gmail.com"
 ENV URL="example.penguintech.group"
 
 # Switch to non-root user
