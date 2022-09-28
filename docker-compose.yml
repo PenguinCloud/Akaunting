@@ -2,9 +2,9 @@
 version: "2.4"
 services:
   mariadb:
-    image: 'bitnami/mariadb:latest'
+    image: 'mariadb:latest'
     environment:
-      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_RANDOM_ROOT_PASSWORD=yes
       - MARIADB_PASSWORD=p@ssword
       - MARIADB_DATABASE=akaunting
       - MARIADB_USER=akaunting

@@ -20,4 +20,18 @@
     path: "/opt/akaunting/{{ app.version }}"
     state: absent
 
+- name: Install composer dependencies
+  shell:
+    chdir: /opt/akaunting
+    cmd: composer install
+
+- name: Install npm dependencies
+  shell:
+    chdir: /opt/akaunting
+    cmd: npm install
+
+- name: Run npm
+  shell:
+    chdir: /opt/akaunting
+    cmd: npm run
 

@@ -1,37 +1,4 @@
 ---
-- name: Install composer dependencies
-  shell:
-    chdir: /opt/akaunting
-    cmd: composer install
-
-- name: Install npm dependencies
-  shell:
-    chdir: /opt/akaunting
-    cmd: npm install
-
-- name: Run npm
-  shell:
-    chdir: /opt/akaunting
-    cmd: npm run
-
-- name: Run Command to install akaunting
-  shell:
-    chdir: /opt/akaunting
-    cmd: "php artisan install --db-host={{ database.host }} \
-      --db-port={{ database.port }} \
-      --db-name={{ database.name }} \
-      --db-username={{ database.user }} \
-      --db-password={{ database.password }} \
-      --company-name={{ company.name }} \
-      --company-email={{ company.email }} \
-      --admin-email={{ admin.email }} \
-      --admin-password={{ admin.password }}"
-
-- name: Change the perissions of the repository for akaunting
-  shell:
-    chdir: /opt/akaunting
-    cmd: chown www-data:www-data -R
-
 - name: Configure nginx .conf
   template:
     src: templates/nginx.j2
@@ -42,4 +9,36 @@
   template:
     src: templates/akaunting_web.j2
     dest: /etc/nginx/conf.d/akaunting.conf
+
+- name: Start nginx
+  shell:
+    cmd: |
+      /etc/init.d/nginx start
+      /etc/init.d/php8.0-fpm start
+
+# Command must actually run twice and after you start nginx
+- name: Run Command to install akaunting
+  shell:
+    chdir: /opt/akaunting
+    cmd: >
+      php artisan install
+      --db-host="{{ database.host }}"
+      --db-port="{{ database.port }}"
+      --db-name="{{ database.name }}"
+      --db-username="{{ database.user }}"
+      --db-password="{{ database.password }}"
+      --company-name="{{ company.name }}"
+      --company-email="{{ company.email }}"
+      --admin-email="{{ admin.email }}"
+      --admin-password="{{ admin.password }}"
+  register: cmd_result
+  until: cmd_result is succeeded
+  retries: 4
+  delay: 5
+
+- name: Stop nginx
+  shell:
+    cmd: |
+      /etc/init.d/nginx stop
+      /etc/init.d/php8.1-fpm stop
 

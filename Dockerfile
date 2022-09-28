@@ -28,8 +28,8 @@ ENV DATABASE_HOST="mariadb"
 ENV DATABASE_PORT="3306"
 ENV COMPANY_NAME="Penguintech Group"
 ENV COMPANY_EMAIL="company@gmail.com"
-ENV ADMIN_PASSWORD="admin"
-ENV ADMIN_EMAIL="dompoes@gmail.com"
+ENV ADMIN_PASSWORD="12345"
+ENV ADMIN_EMAIL="admin@yahoo.com"
 ENV URL="example.penguintech.group"
 
 # Switch to non-root user

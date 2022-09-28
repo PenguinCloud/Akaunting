@@ -11,3 +11,7 @@
   include_tasks:
     file: install_akaunting.yml
 
+- name: Set permissions
+  include_tasks:
+    file: permissions.yml
+
