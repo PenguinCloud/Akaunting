@@ -1,5 +1,5 @@
 ---
-- name: Recursively change ownership of a directory
+- name: Recursively change ownership of akaunting directory
   ansible.builtin.file:
     path: /opt/akaunting
     state: directory
@@ -7,11 +7,66 @@
     owner: www-data
     group: www-data
 
-- name: Recursively change ownership of a directory
+- name: Recursively change ownership of data directory 05
   ansible.builtin.file:
-    path: /opt/akaunting/storage/framework/cache/data
+    path: /opt/akaunting/storage/framework/cache/data/05
     state: directory
     recurse: yes
-    mode: '775'
+    owner: www-data
+    group: www-data
+
+- name: Recursively change ownership of data directory 76
+  ansible.builtin.file:
+    path: /opt/akaunting/storage/framework/cache/data/76
+    state: directory
+    recurse: yes
+    owner: www-data
+    group: www-data
+
+- name: Recursively change ownership of data directory 7b
+  ansible.builtin.file:
+    path: /opt/akaunting/storage/framework/cache/data/7b
+    state: directory
+    recurse: yes
+    owner: www-data
+    group: www-data
+
+- name: Recursively change ownership of data directory 89
+  ansible.builtin.file:
+    path: /opt/akaunting/storage/framework/cache/data/89
+    state: directory
+    recurse: yes
+    owner: www-data
+    group: www-data
+
+- name: Recursively change ownership of data directory b9
+  ansible.builtin.file:
+    path: /opt/akaunting/storage/framework/cache/data/b9
+    state: directory
+    recurse: yes
+    owner: www-data
+    group: www-data
+
+- name: Recursively change ownership of data directory cf
+  ansible.builtin.file:
+    path: /opt/akaunting/storage/framework/cache/data/cf
+    state: directory
+    recurse: yes
+    owner: www-data
+    group: www-data
+
+- name: Recursively change ownership of data directory cf/40
+  ansible.builtin.file:
+    path: /opt/akaunting/storage/framework/cache/data/cf/40
+    state: directory
+    recurse: yes
+    owner: www-data
+    group: www-data
+
+- name: Recursively change ownership of data directory e3
+  ansible.builtin.file:
+    path: /opt/akaunting/storage/framework/cache/data/e3
+    state: directory
+    recurse: yes
     owner: www-data
     group: www-data

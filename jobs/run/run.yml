@@ -40,5 +40,5 @@
   shell:
     cmd: |
       /etc/init.d/nginx stop
-      /etc/init.d/php8.1-fpm stop
+      /etc/init.d/php8.0-fpm stop
 
