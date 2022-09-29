@@ -11,7 +11,10 @@
   include_tasks:
     file: install_akaunting.yml
 
+- name: Set permissions for php-fpm
+  include_tasks:
+    file: permissions_phpfpm.yml
+
 - name: Set permissions
   include_tasks:
     file: permissions.yml
-

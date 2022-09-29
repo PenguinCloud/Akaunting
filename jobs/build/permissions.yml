@@ -1,72 +1,221 @@
 ---
 - name: Recursively change ownership of akaunting directory
   ansible.builtin.file:
+    path: /etc/php/8.0/fpm/pool.d
+    state: directory
+    recurse: yes
+    owner: "{{ run.user }}"
+    group: "{{ run.user }}"
+
+- name: Recursively change ownership of akaunting directory
+  ansible.builtin.file:
     path: /opt/akaunting
     state: directory
     recurse: yes
-    owner: www-data
-    group: www-data
+    owner: "{{ run.user }}"
+    group: "{{ run.user }}"
 
-- name: Recursively change ownership of data directory 05
+- name: Create directory for php-fpm
   ansible.builtin.file:
-    path: /opt/akaunting/storage/framework/cache/data/05
+    path: /run/php
+    state: directory
+
+- name: Recursively change ownership of data directory /run/php
+  ansible.builtin.file:
+    path: /run/php
     state: directory
     recurse: yes
-    owner: www-data
-    group: www-data
+    owner: "{{ run.user }}"
+    group: "{{ run.user }}"
 
-- name: Recursively change ownership of data directory 76
+
+#- name: Recursively change ownership of data directory 05
+#  ansible.builtin.file:
+#    path: /opt/akaunting/storage/framework/cache/data/05
+#    state: directory
+#    recurse: yes
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+#
+#- name: Recursively change ownership of data directory 05/63
+#  ansible.builtin.file:
+#    path: /opt/akaunting/storage/framework/cache/data/05/63
+#    state: directory
+#    recurse: yes
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+#
+#- name: Recursively change ownership of data directory 76
+#  ansible.builtin.file:
+#    path: /opt/akaunting/storage/framework/cache/data/76
+#    state: directory
+#    recurse: yes
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+#
+#- name: Recursively change ownership of data directory 76/bd
+#  ansible.builtin.file:
+#    path: /opt/akaunting/storage/framework/cache/data/76/bd
+#    state: directory
+#    recurse: yes
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+#
+#- name: Recursively change ownership of data directory 7b
+#  ansible.builtin.file:
+#    path: /opt/akaunting/storage/framework/cache/data/7b
+#    state: directory
+#    recurse: yes
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+#
+#- name: Recursively change ownership of data directory 7b/76
+#  ansible.builtin.file:
+#    path: /opt/akaunting/storage/framework/cache/data/7b/76
+#    state: directory
+#    recurse: yes
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+#
+#- name: Recursively change ownership of data directory 7b/76/7b7686d8ffc43f1281815e0f0a6c002f7e4674b8
+#  ansible.builtin.file:
+#    path: /opt/akaunting/storage/framework/cache/data/7b/76/7b7686d8ffc43f1281815e0f0a6c002f7e4674b8
+#    state: directory
+#    recurse: yes
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+#
+#- name: Recursively change ownership of data directory 89
+#  ansible.builtin.file:
+#    path: /opt/akaunting/storage/framework/cache/data/89
+#    state: directory
+#    recurse: yes
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+##
+#- name: Recursively change ownership of data directory 89/1d
+#  ansible.builtin.file:
+#    path: /opt/akaunting/storage/framework/cache/data/89/id
+#    state: directory
+#    recurse: yes
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+#
+#- name: Recursively change ownership of data directory b9
+#  ansible.builtin.file:
+#    path: /opt/akaunting/storage/framework/cache/data/b9
+#    state: directory
+#    recurse: yes
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+#
+#- name: Recursively change ownership of data directory b9/c7
+#  ansible.builtin.file:
+#    path: /opt/akaunting/storage/framework/cache/data/b9/c7
+#    state: directory
+#    recurse: yes
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+#
+#- name: Recursively change ownership of data directory b9/c7/b9c7b522f284d5208a71a5f55f0cc904b7e42f00
+#  ansible.builtin.file:
+#    path: /opt/akaunting/storage/framework/cache/data/b9/c7/b9c7b522f284d5208a71a5f55f0cc904b7e42f00
+#    state: directory
+#    recurse: yes
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+#
+#- name: Recursively change ownership of data directory cf
+#  ansible.builtin.file:
+#    path: /opt/akaunting/storage/framework/cache/data/cf
+#    state: directory
+#    recurse: yes
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+#
+#- name: Recursively change ownership of data directory cf/40/cf40d436c64b358d83a3ae84f8d9e9bb61573a66
+#  ansible.builtin.file:
+#    path: /opt/akaunting/storage/framework/cache/data/cf/40/cf40d436c64b358d83a3ae84f8d9e9bb61573a66
+#    state: directory
+#    recurse: yes
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+#
+#- name: Recursively change ownership of data directory cf/40/cf40d436c64b358d83a3ae84f8d9e9bb61573a66
+#  ansible.builtin.file:
+#    path: /opt/akaunting/storage/logs
+#    state: directory
+#    recurse: yes
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+
+#- name: Recursively change ownership of data directory e3
+#  ansible.builtin.file:
+#    path: /opt/akaunting/storage/framework/cache/data/e3
+#    state: directory
+#    recurse: yes
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+
+#- name: Recursively change ownership of data directory e3/8d
+#  ansible.builtin.file:
+#    path: /opt/akaunting/storage/framework/cache/data/e3/8d
+#    state: directory
+#    recurse: yes
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+#
+#- name: Recursively change ownership of data directory e3/8d/e38dad9256ea4e4cecbbbdc11863e76b50fb15cf
+#  ansible.builtin.file:
+#    path: /opt/akaunting/storage/framework/cache/data/e3/8d/e38dad9256ea4e4cecbbbdc11863e76b50fb15cf
+#    state: directory
+#    recurse: yes
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+
+#- name: Recursively change ownership for var/www
+#  ansible.builtin.file:
+#    path: /var/www
+#    state: directory
+#    recurse: yes
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+
+- name: Recursively change ownership for etc/nginx
   ansible.builtin.file:
-    path: /opt/akaunting/storage/framework/cache/data/76
+    path: /etc/nginx
     state: directory
     recurse: yes
-    owner: www-data
-    group: www-data
+    owner: "{{ run.user }}"
+    group: "{{ run.user }}"
 
-- name: Recursively change ownership of data directory 7b
-  ansible.builtin.file:
-    path: /opt/akaunting/storage/framework/cache/data/7b
-    state: directory
-    recurse: yes
-    owner: www-data
-    group: www-data
-
-- name: Recursively change ownership of data directory 89
-  ansible.builtin.file:
-    path: /opt/akaunting/storage/framework/cache/data/89
-    state: directory
-    recurse: yes
-    owner: www-data
-    group: www-data
-
-- name: Recursively change ownership of data directory b9
-  ansible.builtin.file:
-    path: /opt/akaunting/storage/framework/cache/data/b9
-    state: directory
-    recurse: yes
-    owner: www-data
-    group: www-data
-
-- name: Recursively change ownership of data directory cf
-  ansible.builtin.file:
-    path: /opt/akaunting/storage/framework/cache/data/cf
-    state: directory
-    recurse: yes
-    owner: www-data
-    group: www-data
-
-- name: Recursively change ownership of data directory cf/40
-  ansible.builtin.file:
-    path: /opt/akaunting/storage/framework/cache/data/cf/40
-    state: directory
-    recurse: yes
-    owner: www-data
-    group: www-data
-
-- name: Recursively change ownership of data directory e3
-  ansible.builtin.file:
-    path: /opt/akaunting/storage/framework/cache/data/e3
-    state: directory
-    recurse: yes
-    owner: www-data
-    group: www-data
+#- name: Change ownnership of file
+#  ansible.builtin.file:
+#    path: /econftc/nginx/nginx.
+#    state: touch
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+##
+#
+#- name: Recursively change ownership for var/log/nginx
+#  ansible.builtin.file:
+#    path: /var/log/nginx
+#    state: directory
+#    recurse: yes
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+#
+#- name: Recursively change ownership for var/cache/nginx
+#  ansible.builtin.file:
+#    path: /var/cache/nginx
+#    state: directory
+#    recurse: yes
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"
+#
+#- name: Create nginx file
+#  ansible.builtin.file:
+#    path: /var/run/nginx.pid
+#    state: touch
+#    owner: "{{ run.user }}"
+#    group: "{{ run.user }}"

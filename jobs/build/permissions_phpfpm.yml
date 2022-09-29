@@ -1,0 +1,8 @@
+---
+- name: Recursively change ownership of php-fpm pool.d repository
+  ansible.builtin.file:
+    path: /etc/php/8.0/fpm/pool.d
+    state: directory
+    recurse: yes
+    owner: "{{ run.user }}"
+    group: "{{ run.user }}"

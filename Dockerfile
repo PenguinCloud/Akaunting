@@ -33,7 +33,7 @@ ENV ADMIN_EMAIL="admin@yahoo.com"
 ENV URL="example.penguintech.group"
 
 # Switch to non-root user
-# USER ptg-user
+USER ptg-user
 
 EXPOSE 8080
 
