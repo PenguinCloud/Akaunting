@@ -7,7 +7,7 @@
     owner: "{{ run.user }}"
     group: "{{ run.user }}"
 
-- name: Recursively change ownership of data directory /run/php
+- name: Recursively change ownership of /var/lib/nginx
   ansible.builtin.file:
     path: /var/lib/nginx
     state: directory
