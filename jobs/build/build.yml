@@ -17,4 +17,4 @@
 
 - name: Set permissions
   include_tasks:
-    file: permissions.yml
+    file: permissions_nginx.yml

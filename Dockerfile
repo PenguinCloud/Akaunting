@@ -15,7 +15,6 @@ ARG APP_TITLE="Akaunting"
 ARG APP_LINK="https://akaunting.com/download.php?version=latest"
 ARG APP_VERSION="Akaunting_3.0.6-Stable.zip"
 
-# USER ptg-user
 # BUILD IT!
 RUN ansible-playbook build.yml -c local
 
