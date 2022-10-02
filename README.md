@@ -1,6 +1,6 @@
 # Akaunting
 
->>Akaunting is a free, open source and online accounting software designed for small businesses and freelancers. 
+>>Akaunting is a free, open source online accounting software designed for small businesses and freelancers. 
 > It is built with modern technologies such as Laravel, VueJS, Tailwind, RESTful API etc.
 > 
 # Why this image vs others
