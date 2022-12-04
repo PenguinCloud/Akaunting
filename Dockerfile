@@ -13,7 +13,7 @@ RUN apt update && apt dist-upgrade -y && apt auto-remove -y && apt clean -y
 # PUT YER ARGS in here
 ARG APP_TITLE="Akaunting"
 ARG APP_LINK="https://akaunting.com/download.php?version=latest"
-ARG APP_VERSION="Akaunting_3.0.6-Stable.zip"
+ARG APP_VERSION="Akaunting_3.0.7-Stable.zip"
 
 # BUILD IT!
 RUN ansible-playbook build.yml -c local
