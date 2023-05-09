@@ -1,12 +1,9 @@
 ---
-- name: PROJECT NAME
+- name: Akaunting
   hosts: localhost
   connection: local
   vars_files:
     - vars/base.yml
-  become: yes
-  become_user: root
-  remote_user: root
   tasks:
     - name: Include nodeType variables
       include_vars:
@@ -18,25 +15,14 @@
       include_vars:
         file: "vars/{{ lookup('env', 'COMPUTE_ENV') | default( 'base', True) }}.yml"
       ignore_errors: yes
-    - name: Build And Install
+# Need to put this in here to start the database before running commands to install databse in app
+    - name: Run tests to make sure app is running as expected
       include_tasks:
-        file: jobs/build/build.yml
-        apply:
-          tags:
-            - build
-      tags:
-        - build
+        file: jobs/tests/tests.yml
+    - name: Run And Configure
+      include_tasks:
+        file: jobs/run/run.yml
     - name: Execute application
       include_tasks:
         file: jobs/run/exec.yml
-        apply:
-          tags:
-            - exec
-      tags:
-        - exec
-    - name: Run tests to make sure app is running as expected
-      include_tasks:
-        file: jobs/run/tests.yml
-      tags:
-        - exec
-        - test
+

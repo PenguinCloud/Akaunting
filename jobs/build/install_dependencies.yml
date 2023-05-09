@@ -1,0 +1,34 @@
+---
+- name: Add php repo
+  apt_repository:
+    repo: ppa:ondrej/php
+    state: present
+
+- name: Install dependencies
+  apt:
+    name:
+      - php8.0
+      - php8.0-bcmath
+      - php8.0-ctype
+      - php8.0-curl
+      - php8.0-dom
+      - php8.0-fileinfo
+      - php8.0-intl
+      - php8.0-gd
+      - php8.0-mbstring
+      - openssl
+      - php8.0-pdo
+      - php8.0-tokenizer
+      - php8.0-xml
+      - php8.0-zip
+      - php8.0-fpm
+      - php8.0-mysql
+      - python3-pymysql
+      - nginx-full
+      - npm
+    state: present
+    update_cache: yes
+
+
+
+

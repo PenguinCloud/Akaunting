@@ -1,0 +1,37 @@
+---
+- name: Create empty repo for akaunting
+  file:
+    path: /opt/akaunting
+    state: directory
+
+- name: Download zip file
+  ansible.builtin.get_url:
+    url: "{{ app.link}}"
+    dest: /opt/akaunting
+
+- name: Install Akaunting
+  unarchive:
+    src: "/opt/akaunting/{{ app.version }}"
+    dest: /opt/akaunting
+    remote_src: yes
+
+- name: Delete the zip file
+  file:
+    path: "/opt/akaunting/{{ app.version }}"
+    state: absent
+
+- name: Install composer dependencies
+  shell:
+    chdir: /opt/akaunting
+    cmd: composer install
+
+- name: Install npm dependencies
+  shell:
+    chdir: /opt/akaunting
+    cmd: npm install
+
+- name: Run npm
+  shell:
+    chdir: /opt/akaunting
+    cmd: npm run
+

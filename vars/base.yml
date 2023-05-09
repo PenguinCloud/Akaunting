@@ -1,4 +1,20 @@
 run:
   user: ptg-user
+
 app:
-  title: "'{{ lookup('ansible.builtin.env', 'APP_TILE') }}'
+  title: "{{ lookup('ansible.builtin.env', 'APP_TILE') }}"
+  link: "{{ lookup('env', 'APP_LINK') }}"
+  version: "{{ lookup('env', 'APP_VERSION') }}"
+
+database:
+  name: "{{ lookup('env', 'DATABASE_NAME') }}"
+  user: "{{ lookup('env', 'DATABASE_USER') }}"
+  password: "{{ lookup('env', 'DATABASE_PASSWORD') }}"
+  host: "{{ lookup('env', 'DATABASE_HOST') }}"
+  port: "{{ lookup('env', 'DATABASE_PORT') }}"
+  type: "{{ lookup('env', 'DATABASE_TYPE') }}"
+
+admin:
+  password: "{{ lookup('env', 'ADMIN_PASSWORD') }}"
+  email: "{{ lookup('env', 'ADMIN_EMAIL') }}"
+

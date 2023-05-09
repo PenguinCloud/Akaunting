@@ -11,16 +11,27 @@ WORKDIR /opt/manager
 RUN apt update && apt dist-upgrade -y && apt auto-remove -y && apt clean -y
 
 # PUT YER ARGS in here
-ARG APP_TITLE="PTGAPP" # Change this to actual title for Default
+ARG APP_TITLE="Akaunting"
+ARG APP_LINK="https://akaunting.com/download.php?version=latest"
+ARG APP_VERSION="Akaunting_3.0.7-Stable.zip"
 
 # BUILD IT!
 RUN ansible-playbook build.yml -c local
 
 # PUT YER ENVS in here
-# ENV FOO="BAR"
+ENV DATABASE_TYPE="mariadb"
+ENV DATABASE_NAME="akaunting"
+ENV DATABASE_USER="akaunting"
+ENV DATABASE_PASSWORD="p@ssword"
+ENV DATABASE_HOST="mariadb"
+ENV DATABASE_PORT="3306"
+ENV ADMIN_PASSWORD="12345"
+ENV ADMIN_EMAIL="admin@yahoo.com"
 
 # Switch to non-root user
 USER ptg-user
+
+EXPOSE 8080
 
 # Entrypoint time (aka runtime)
 ENTRYPOINT ["/bin/bash","/opt/manager/entrypoint.sh"]

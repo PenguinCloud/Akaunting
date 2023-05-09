@@ -1,0 +1,20 @@
+---
+- name: Install dependencies
+  include_tasks:
+    file: install_dependencies.yml
+
+- name: Install Composer
+  include_tasks:
+    file: install_composer.yml
+
+- name: Install Akaunting
+  include_tasks:
+    file: install_akaunting.yml
+
+- name: Set permissions for php-fpm
+  include_tasks:
+    file: permissions_phpfpm.yml
+
+- name: Set permissions
+  include_tasks:
+    file: permissions_nginx.yml
